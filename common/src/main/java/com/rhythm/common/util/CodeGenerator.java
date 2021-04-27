@@ -39,6 +39,9 @@ public class CodeGenerator {
     }
 
     public static void main(String[] args) {
+
+        String model = "dining";
+
         // 代码生成器
         AutoGenerator mpg = new AutoGenerator();
         // set freemarker engine
@@ -46,7 +49,7 @@ public class CodeGenerator {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-        gc.setOutputDir(projectPath + "/rpst/src/main/java");
+        gc.setOutputDir(projectPath + "/" + model +"/src/main/java");
         gc.setAuthor("xzpei");
         gc.setOpen(false);
         gc.setFileOverride(false); // 是否覆盖生成文件
@@ -55,7 +58,7 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/user?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC");
+        dsc.setUrl("jdbc:mysql://localhost:3306/chaindining?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
@@ -65,7 +68,7 @@ public class CodeGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
         //pc.setModuleName(scanner("模块名"));
-        pc.setModuleName("rpst");
+        pc.setModuleName(model);
         pc.setParent("com.rhythm");
         mpg.setPackageInfo(pc);
 
@@ -89,7 +92,7 @@ public class CodeGenerator {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                return projectPath + "/rpst/src/main/resources/mapper/" + pc.getModuleName()
+                return projectPath + "/" + model +"/src/main/resources/mapper/" + pc.getModuleName()
                         + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
         });

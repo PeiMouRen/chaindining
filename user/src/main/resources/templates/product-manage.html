@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>产品管理</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="/layui/css/layui.css"  media="all">
+	<!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+<table class="layui-hide" id="test" lay-filter="test"></table>
+
+<div style="display: none;" id="product_form">
+	<form class="layui-form" onsubmit="return false;" lay-filter="product_form">
+		<input type="text" name="id" id="product_id" value="" style="display: none" />
+		<div class="layui-form-item">
+			<label class="layui-form-label">产品类型</label>
+			<div class="layui-input-block">
+				<div id="product_type" class="xm-select-demo"></div>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">产品名称</label>
+			<div class="layui-input-block">
+				<input type="text" name="name" required  lay-verify="required" placeholder="请输入产品名称" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit lay-filter="form_submit">确定</button>
+				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div style="display: none; overflow: hidden" id="inStorage_form">
+	<form class="layui-form" onsubmit="return false;" lay-filter="inStorage_form">
+		<input type="hidden" id="inStorage_product_id" name="productId" value="">
+		<div class="layui-form-item">
+			<label class="layui-form-label">选择仓库</label>
+			<div class="layui-input-block">
+				<div id="inStorage_rpst_select" class="xm-select-demo"></div>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">入库数量</label>
+			<div class="layui-input-block">
+				<input type="text" name="productNum" required id="inStorage_product_num"  lay-verify="required|number" placeholder="请输入入库数量" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item layui-form-text">
+			<label class="layui-form-label">备注</label>
+			<div class="layui-input-block">
+				<textarea name="des" id="productDes" placeholder="备注" class="layui-textarea"></textarea>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit lay-filter="inStorage_form_submit">确定</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script type="text/html" id="toolbarDemo">
+	<div class="layui-btn-container">
+		<button class="layui-btn layui-btn-sm" lay-event="addProduct">新增产品</button>
+	</div>
+</script>
+<input type="hidden" id="user_level" th:value="${userLevel}">
+<script type="text/html" id="barDemo">
+	<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+	<a class="layui-btn layui-btn-xs" lay-event="inStorage">入库</a>
+	{{# if($('#user_level').val() == 1) { }}
+		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	{{# } }}
+</script>
+
+<script src="/js/jquery-3.6.0.min.js" charset="utf-8"></script>
+<script src="/layui/layui.js" charset="utf-8"></script>
+<script src="/js/xm-select.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
+
+<script th:inline="none">
+	layui.use(['table', 'form', 'layer'], function(){
+		var table = layui.table;
+		var form = layui.form;
+		var layer = layui.layer;
+		var inStorageRpstSelect;
+		var productTypeSelect;
+		var rpstDatas = [];
+		var productTypes = [];
+		$.ajax({
+			type: "get",
+			url: "/rpst/rpsts",
+			dataType: "json",
+			async: false,
+			success: function(result) {
+				if (result.code == 200) {
+					for (var i = 0; i < result.data.length; i++) {
+						var rpst = result.data[i];
+						var rpstData = {name : rpst.name, value : rpst.id, selected : false};
+						rpstDatas.push(rpstData);
+					}
+				}
+			}
+		})
+		$.ajax({
+			type: "get",
+			url: "/product/productTypes",
+			dataType: "json",
+			async: false,
+			success: function(result) {
+				if (result.code == 200) {
+					for (var i = 0; i < result.data.length; i++) {
+						var productType = {name : result.data[i], value: result.data[i], selected : false};
+						productTypes.push(productType);
+					}
+				}
+			}
+		})
+		inStorageRpstSelect = xmSelect.render({
+			el: '#inStorage_rpst_select',
+			name: 'rpstIds',
+			data: rpstDatas,
+			filterable: true,
+			size: 'mini',
+			paging: true,
+			toolbar: {
+				show: true,
+			},
+			radio: true,
+			clickClose: true,
+			direction: 'down'
+		});
+		productTypeSelect = xmSelect.render({
+			el: '#product_type',
+			name: 'type',
+			data: productTypes,
+			filterable: true,
+			filterDone: function(val, list) {
+				if (list.length == 0) {
+
+					layer.confirm('产品类型【' + val + '】不存在，是否创建？',
+							{
+								icon: 3,
+								title:'提示'
+							}, function(index) {
+								var productType = {name : val, value : val, selected : false};
+								productTypes.push(productType);
+								productTypeSelect.update({data: productTypes});
+								productTypeSelect.setValue([val]);
+								layer.close(index);
+							}, function(index) {
+								layer.close(index);
+							});
+
+				}
+			},
+			size: 'mini',
+			toolbar: {
+				show: true,
+			},
+			paging: true,
+			radio: true,
+			clickClose: true,
+			direction: 'down'
+		});
+
+		var productTable = table.render({
+			elem: '#test'
+			,url:'/product/products'
+			,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+			,defaultToolbar: ['filter', 'exports', 'print']
+			,cols: [[
+				{field:'id', width:120, title: '产品编号', sort: true, align: 'center'}
+				,{field:'type', width:100, title: '产品类型', align: 'center'}
+				,{field:'name', width:160, title: '产品名称', align: 'center'}
+				,{width:200,title:'操作', toolbar:'#barDemo', align: 'center'}
+			]]
+			,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+				layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+				//,curr: 5 //设定初始在第 5 页
+				,groups: 5 //只显示 5 个连续页码
+				,first: true //显示首页
+				,last: true //显示尾页
+			}
+			,request: {
+				pageName: 'current',
+				limitName: 'size'
+			}
+			,response: {
+				statusName: 'code' //数据状态的字段名称，默认：code
+				,statusCode: 200 //成功的状态码，默认：0
+				,msgName: 'message' //状态信息的字段名称，默认：msg
+				,countName: 'total' //数据总数的字段名称，默认：count
+				,dataName: 'data' //数据列表的字段名称，默认：data
+			}
+			,done: function(res, curr, count) {
+
+			}
+		});
+
+		//头工具栏事件
+		table.on('toolbar(test)', function(obj){
+			switch(obj.event){
+				case 'addProduct':
+					$('#product_form form')[0].reset();
+					productTypeSelect.setValue([]);
+					layer.open({
+						type: 1,
+						title: '新增产品',
+						area: ['400px', '400px'],
+						content: $('#product_form')
+					});
+					break;
+			};
+		});
+
+		//监听工具条
+		table.on('tool(test)', function(obj){
+			if(obj.event === 'del'){
+				layer.confirm('确定删除该产品？', function(index){
+					$.ajax({
+						type: "delete",
+						url: "/product/product/" + obj.data.id,
+						dataType: "json",
+						success: function(result) {
+							if (result.code == 200) {
+								layer.msg('删除成功！', {icon : 1});
+							}
+						}
+					})
+					productTable.reload({}, false);
+					layer.close(index);
+				});
+			} else if(obj.event === 'edit'){
+				form.val('product_form', obj.data);
+				$('#product_id').val(obj.data.id);
+				productTypeSelect.setValue([obj.data.type]);
+				layer.open({
+					type: 1,
+					title: '编辑产品信息',
+					area: ['400px', '400px'],
+					content: $('#product_form')
+				});
+			} else if(obj.event === 'inStorage') {
+				$('#inStorage_product_id').val(obj.data.id);
+				inStorageRpstSelect.setValue([]);
+				$('#inStorage_form form')[0].reset();
+				layer.open({
+					type: 1,
+					title: '产品入库',
+					area: ['410px', '350px'],
+					scrollbar: false,
+					content: $('#inStorage_form')
+				});
+
+			}
+		});
+
+		// 监听form表单提交
+		form.on('submit(form_submit)', function(data) {
+			var method = '';
+			var product = {};
+			if (data.field.id == '') {
+				method = 'post';
+			} else {
+				method = 'put';
+				product.id = data.field.id;
+			}
+			product.type = productTypeSelect.getValue()[0].name;
+			product.name = data.field.name;
+			$.ajax({
+				type: method,
+				url: "/product/product",
+				contentType:"application/json;charset=utf-8",
+				data: JSON.stringify(product),
+				dataType: "json",
+				success: function(result) {
+					if (result.code == 200) {
+						layer.closeAll();
+						productTable.reload({}, false);
+						layer.msg('更新成功！', {icon : 1});
+					} else if (result.code == 201) {
+						layer.closeAll();
+						layer.msg(result.message, {icon : 2});
+					}
+				}
+			})
+		});
+		form.on('submit(inStorage_form_submit)', function(data) {
+			var data = {};
+			data.rpstId = inStorageRpstSelect.getValue()[0].value;
+			data.productId = $('#inStorage_product_id').val();
+			data.productNum = $('#inStorage_product_num').val();
+			data.operate = 1;
+			data.des = $('#productDes').val();
+			$.ajax({
+				type: 'put',
+				url: "/product/inventory",
+				contentType:"application/json;charset=utf-8",
+				data: JSON.stringify(data),
+				dataType: "json",
+				success: function(result) {
+					if (result.code == 200) {
+						layer.closeAll();
+						layer.msg('产品入库成功！', {icon : 1});
+					} else if (result.code == 201) {
+						layer.closeAll();
+						layer.msg(result.message, {icon : 2});
+					}
+				}
+			})
+		});
+
+
+	});
+</script>
+
+</body>
+</html>

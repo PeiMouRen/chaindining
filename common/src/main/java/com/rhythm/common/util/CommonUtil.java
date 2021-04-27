@@ -2,6 +2,10 @@ package com.rhythm.common.util;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class CommonUtil {
     public static String getMD5String(String str) {
@@ -21,6 +25,16 @@ public class CommonUtil {
     }
 
     public static void main(String[] args) {
-        System.out.println(getMD5String("admin"));
+        Set<String> set = new HashSet<>();
+        set.add("admin");
+        set.add("admin1");
+        set.add("admin2");
+
+        List<String> list = new ArrayList<>();
+        list.add("admin");
+        list.add("admin1");
+        list.add("admin2");
+        System.out.println(set.toString());
+        System.out.println(list.toString());
     }
 }
