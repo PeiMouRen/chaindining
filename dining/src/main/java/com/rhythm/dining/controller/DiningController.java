@@ -3,6 +3,9 @@ package com.rhythm.dining.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.rhythm.common.Enum.UserLevel;
+import com.rhythm.common.entity.User;
 import com.rhythm.common.result.Result;
 import com.rhythm.common.util.CommonUtil;
 import com.rhythm.dining.entity.Dining;
@@ -11,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +33,8 @@ public class DiningController {
     
     @Autowired
     private IDiningService diningService;
+    @Autowired
+    private ObjectMapper objectMapper;
     
     @PostMapping(value = "/dining")
     public Result addDining(@RequestBody Dining dining) {
@@ -65,8 +71,25 @@ public class DiningController {
     }
 
     @GetMapping(value = "/dinings")
-    public Result dinings(Page page) {
-        page = diningService.getDinings(page);
+    public Result dinings(Page page, HttpSession session) {
+        User user = null;
+        try {
+            user = objectMapper.readValue((String)session.getAttribute("user"), User.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (user == null) {
+            Result result = Result.error();
+            result.setMessage("当前登录用户已失效，请重新登录！");
+            return Result.error();
+        } else {
+            if (UserLevel.ADMIN.getLevel() == user.getLevel()) {
+                page = diningService.page(page);
+            } else if (UserLevel.MANAGER.getLevel() == user.getLevel()) {
+                page.setRecords(diningService.getDiningByManageId(user.getId()));
+                page.setTotal(1);
+            }
+        }
         Result result = Result.ok();
         result.setTotal(page.getTotal());
         result.setData(page.getRecords());

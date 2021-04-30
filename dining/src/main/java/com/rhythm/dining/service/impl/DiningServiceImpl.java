@@ -1,13 +1,15 @@
 package com.rhythm.dining.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.rhythm.dining.entity.Dining;
 import com.rhythm.dining.mapper.DiningMapper;
 import com.rhythm.dining.service.IDiningService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -18,10 +20,12 @@ import org.springframework.stereotype.Service;
  * @since 2021-04-26
  */
 @Service
+@Slf4j
 public class DiningServiceImpl extends ServiceImpl<DiningMapper, Dining> implements IDiningService {
 
     @Autowired
     private DiningMapper diningMapper;
+
 
     @Override
     public void addDining(Dining dining) {
@@ -34,8 +38,7 @@ public class DiningServiceImpl extends ServiceImpl<DiningMapper, Dining> impleme
     }
 
     @Override
-    public Page getDinings(Page page) {
-        page = diningMapper.selectPage(page, new QueryWrapper<>());
-        return page;
+    public List<Dining> getDiningByManageId(Integer userId) {
+        return diningMapper.getDiningByUserId(userId);
     }
 }

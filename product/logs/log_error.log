@@ -1,0 +1,7 @@
+2021-04-18 15:29:03.454 [main] ERROR com.baomidou.mybatisplus.core.MybatisConfiguration - mapper[com.rhythm.product.mapper.ProductMapper.selectInventory] is ignored, because it exists, maybe from xml file
+2021-04-18 15:31:34.383 [main] ERROR com.baomidou.mybatisplus.core.MybatisConfiguration - mapper[com.rhythm.product.mapper.ProductMapper.selectInventory] is ignored, because it exists, maybe from xml file
+2021-04-18 15:33:23.733 [main] ERROR com.baomidou.mybatisplus.core.MybatisConfiguration - mapper[com.rhythm.product.mapper.ProductMapper.selectInventory] is ignored, because it exists, maybe from xml file
+2021-04-18 15:38:30.040 [main] ERROR com.baomidou.mybatisplus.core.MybatisConfiguration - mapper[com.rhythm.product.mapper.ProductMapper.selectInventory] is ignored, because it exists, maybe from xml file
+2021-04-18 15:40:05.766 [main] ERROR com.baomidou.mybatisplus.core.MybatisConfiguration - mapper[com.rhythm.product.mapper.ProductMapper.selectInventory] is ignored, because it exists, maybe from xml file
+2021-04-18 15:41:47.344 [main] ERROR com.baomidou.mybatisplus.core.MybatisConfiguration - mapper[com.rhythm.product.mapper.ProductMapper.selectInventory] is ignored, because it exists, maybe from xml file
+2021-04-18 15:44:11.945 [main] ERROR com.baomidou.mybatisplus.core.MybatisConfiguration - mapper[com.rhythm.product.mapper.ProductMapper.selectInventory] is ignored, because it exists, maybe from xml file

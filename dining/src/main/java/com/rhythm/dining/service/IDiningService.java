@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.rhythm.dining.entity.Dining;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -18,5 +20,5 @@ public interface IDiningService extends IService<Dining> {
 
     void updDining(Dining dining);
 
-    Page getDinings(Page page);
+    List<Dining> getDiningByManageId(Integer userId);
 }

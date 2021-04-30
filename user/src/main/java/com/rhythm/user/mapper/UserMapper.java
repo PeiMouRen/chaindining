@@ -24,9 +24,12 @@ public interface UserMapper extends BaseMapper<User> {
     @Select("select r.name from role r where r.id in(select roleId from user_role where userId = #{userId})")
     HashSet<String> getRoles(@Param("userId") Integer userId);
 
-    @Insert("insert into user_dining values(#{userId, #{diningId})")
+    @Insert("insert into user_dining values(#{userId}, #{diningId})")
     void addRelation(@Param("userId") Integer userId, @Param("diningId") Integer diningId);
 
     @Delete("delete from user_dining where userId = #{userId}")
     void delRelation(@Param("userId") Integer userId);
+
+    @Select("select diningId from user_dining where userId = #{userId}")
+    Integer getRelation(@Param("userId") Integer userId);
 }

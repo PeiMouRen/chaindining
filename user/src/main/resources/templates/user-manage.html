@@ -116,7 +116,7 @@
 	var diningSelect = xmSelect.render({
 		el: '#dining_select',
 		name: 'diningId',
-		data: rpstDatas,
+		data: diningDatas,
 		filterable: true,
 		radio: true,
 		size: 'mini',
@@ -170,7 +170,7 @@
 			switch(obj.event){
 				case 'addUser':
 					$('#user_form form')[0].reset();
-					rpstSelect.setValue([]);
+					diningSelect.setValue([]);
 					layer.open({
 						type: 1,
 						title: '新增用户',

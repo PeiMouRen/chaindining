@@ -1,6 +1,7 @@
 package com.rhythm.dining.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import lombok.Data;
@@ -29,5 +30,6 @@ public class Dining implements Serializable {
 
     private String place;
 
-
+    @TableField(exist = false)
+    private Integer userId;
 }

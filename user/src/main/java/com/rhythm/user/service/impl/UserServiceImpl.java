@@ -35,16 +35,29 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     public void addUser(User user) {
         userMapper.insert(user);
+        userMapper.delRelation(user.getId());
+        if (user.getDiningId() != null) {
+            userMapper.addRelation(user.getId(), user.getDiningId());
+        }
     }
 
     @Override
     public void updUser(User user) {
         userMapper.updateById(user);
+        userMapper.delRelation(user.getId());
+        if (user.getDiningId() != null) {
+            userMapper.addRelation(user.getId(), user.getDiningId());
+        }
     }
 
     @Override
-    public Page getUsers(Page page) {
+    public Page getUsers(Page<User> page) {
         page = userMapper.selectPage(page, new QueryWrapper<User>().ne("level", UserLevel.ADMIN.getLevel()));
+        List<User> users = page.getRecords();
+        for (User user : users) {
+            user.setDiningId(userMapper.getRelation(user.getId()));
+        }
+        page.setRecords(users);
         return page;
     }
 

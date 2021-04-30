@@ -37,9 +37,8 @@ public class PageController {
 
     @RequestMapping(value = "/index")
     public String index(HttpServletRequest request, Model model) {
-        User user = null;
         try {
-            user = objectMapper.readValue((String)request.getSession().getAttribute("user"), User.class);
+            User user = objectMapper.readValue((String)request.getSession().getAttribute("user"), User.class);
             model.addAttribute("username", user.getUsername());
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -53,9 +52,49 @@ public class PageController {
         return "user-manage";
     }
 
+    @RequiresRoles(value = {"admin", "manager"})
     @RequestMapping(value = "/dining-manage")
-    public String diningManage() {
+    public String diningManage(Model model, HttpSession session) {
+        try {
+            User user = objectMapper.readValue((String)session.getAttribute("user"), User.class);
+            model.addAttribute("userLevel", user.getLevel());
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
         return "dining-manage";
+    }
+
+    @RequestMapping(value = "/dining-info")
+    public String diningInfo(Model model, HttpSession session) {
+        try {
+            User user = objectMapper.readValue((String)session.getAttribute("user"), User.class);
+            model.addAttribute("userLevel", user.getLevel());
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return "dining-info";
+    }
+
+    @RequestMapping(value = "/product-manage")
+    public String productManage(Model model, HttpSession session) {
+        try {
+            User user = objectMapper.readValue((String)session.getAttribute("user"), User.class);
+            model.addAttribute("userLevel", user.getLevel());
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return "product-manage";
+    }
+
+    @RequestMapping(value = "/order-manage")
+    public String orderManage(Model model, HttpSession session) {
+        try {
+            User user = objectMapper.readValue((String)session.getAttribute("user"), User.class);
+            model.addAttribute("userLevel", user.getLevel());
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return "order-manage";
     }
 
 

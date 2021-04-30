@@ -24,8 +24,6 @@ public class DiningController {
     @Autowired
     private IDiningService diningService;
 
-   
-
     @PostMapping(value = "/dining")
     public Result addDining(@RequestBody Dining dining) {
         log.info("新增餐厅，" + dining.toString());

@@ -20,7 +20,9 @@
         <module>eureka</module>
         <module>zuul</module>
         <module>user</module>
-
+        <module>dining</module>
+        <module>product</module>
+        <module>order</module>
     </modules>
 
     <properties>

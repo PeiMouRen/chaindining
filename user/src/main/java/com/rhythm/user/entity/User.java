@@ -41,5 +41,5 @@ public class User implements Serializable {
     private Integer sex;
 
     @TableField(exist = false)
-    private String diningId;
+    private Integer diningId;
 }

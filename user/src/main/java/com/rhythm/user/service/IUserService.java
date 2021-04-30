@@ -23,6 +23,6 @@ public interface IUserService extends IService<User> {
 
     void updUser(User user);
 
-    Page getUsers(Page page);
+    Page getUsers(Page<User> page);
 
 }
