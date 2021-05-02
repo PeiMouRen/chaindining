@@ -5,14 +5,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rhythm.common.Enum.UserLevel;
 import com.rhythm.common.entity.User;
 import com.rhythm.common.result.Result;
 import com.rhythm.product.entity.Product;
 import com.rhythm.product.service.IProductService;
-import com.rhythm.product.service.inter.IRpstService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,15 +34,22 @@ public class ProductController {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @GetMapping(value = "/inventory/{rpstId}")
-    public Result getInventory(Page page, @PathVariable Integer rpstId) {
+    @GetMapping(value = "/productTypes")
+    public Result productTypes() {
+        Result result = Result.ok();
+        result.setData(productService.getProductTypes());
+        return result;
+    }
+
+    @GetMapping(value = "/inventory/{diningId}")
+    public Result getInventory(Page page, @PathVariable Integer diningId) {
         log.info("获取库存信息：");
         log.info("分页详情" + page.toString());
-        log.info("仓库id：" + rpstId);
-        if (rpstId == -1) {
+        log.info("仓库id：" + diningId);
+        if (diningId == -1) {
             return Result.ok();
         }
-        page = productService.getInventory(page, rpstId);
+        page = productService.getInventory(page, diningId);
         Result result = Result.ok();
         result.setTotal(page.getTotal());
         result.setData(page.getRecords());
@@ -62,7 +66,7 @@ public class ProductController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return productService.updateInventory(user.getUsername(), Integer.parseInt(param.get("rpstId")), Integer.parseInt(param.get("productId")),
+        return productService.updateInventory(user.getUsername(), Integer.parseInt(param.get("diningId")), Integer.parseInt(param.get("productId")),
                 Integer.parseInt(param.get("productNum")), Integer.parseInt(param.get("operate")), param.get("des"));
     }
 

@@ -2,18 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.rhythm.product.mapper.ProductMapper">
     <update id="updateInventory">
-        update rpst_product set productNum = productNum
+        update dining_product set productNum = productNum
         <if test="operate == 1">
             + #{productNum}
         </if>
         <if test="operate == -1">
             - #{productNum}
         </if>
-        where rpstId = #{rpstId} and productId = #{productId}
+        where diningId = #{diningId} and productId = #{productId}
     </update>
 
     <select id="selectInventory" resultType="map">
-        select * from rpst_product where rpstId = #{rpstId} and productNum != 0
+        select * from dining_product where diningId = #{diningId} and productNum != 0
     </select>
 
 </mapper>

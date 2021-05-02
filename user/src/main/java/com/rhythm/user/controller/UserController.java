@@ -2,6 +2,8 @@ package com.rhythm.user.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rhythm.common.result.Result;
 import com.rhythm.common.util.CommonUtil;
 import com.rhythm.user.entity.User;
@@ -16,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +29,8 @@ public class UserController {
 
     @Autowired
     private IUserService userService;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     /**
      * 用户登录接口
@@ -65,14 +70,29 @@ public class UserController {
             result.setMessage("新增失败，该用户已存在！");
             return result;
         }
-        userService.addUser(user);
-        return Result.ok();
+        return userService.addUser(user);
     }
 
     @PutMapping(value = "/user")
     public Result updateUser(@RequestBody User user) {
         log.info("更新用户信息，" + user.toString());
         userService.updUser(user);
+        return Result.ok();
+    }
+
+    @PutMapping(value = "/setDining")
+    public Result setDining(Integer userId, Integer diningId) {
+        log.info("设置用户所属餐厅: userId = " + userId + ", diningId = " + diningId);
+        userService.setDining(userId, diningId);
+        return Result.ok();
+    }
+    @PutMapping(value = "/changeDiningManager")
+    public Result changeDiningManager(Integer userId, Integer diningId) {
+        log.info("改变用户所属餐厅: userId = " + userId + ", diningId = " + diningId);
+        userService.delDiningManager(diningId);
+        if (userId != null) {
+            userService.setDining(userId, diningId);
+        }
         return Result.ok();
     }
 
@@ -91,9 +111,17 @@ public class UserController {
         return result;
     }
 
-    @GetMapping(value = "/users")
-    public Result users(Page page) {
-        page = userService.getUsers(page);
+    @GetMapping(value = "/users/{mark}")
+    public Result users(Page page, @PathVariable Integer mark, HttpSession session) {
+        if (mark == 0) {
+            try {
+                User user = objectMapper.readValue((String)session.getAttribute("user"), User.class);
+                mark = user.getDiningId();
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        }
+        page = userService.getUsers(page, mark);
         Result result = Result.ok();
         result.setTotal(page.getTotal());
         result.setData(page.getRecords());

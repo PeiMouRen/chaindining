@@ -2,4 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.rhythm.user.mapper.UserMapper">
 
+    <select id="getUsersByDiningId" resultType="com.rhythm.user.entity.User">
+        select * from user where diningId = #{diningId} order by level
+    </select>
 </mapper>

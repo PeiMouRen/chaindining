@@ -1,0 +1,99 @@
+2021-05-01 14:34:01.805 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.rhythm.dining.Test], using SpringBootContextLoader
+2021-05-01 14:34:01.864 [main] INFO  o.s.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.rhythm.dining.Test]: no resource found for suffixes {-context.xml, Context.groovy}.
+2021-05-01 14:34:03.865 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2021-05-01 14:34:03.951 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3012646b, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4a883b15, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@25641d39, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@7b36aa0c, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5824a83d, org.springframework.test.context.transaction.TransactionalTestExecutionListener@537f60bf, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@5677323c, org.springframework.test.context.event.EventPublishingTestExecutionListener@18df8434, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@65c7a252, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4d154ccd, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@229c6181, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4686afc2, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1e0b4072, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@791f145a]
+2021-05-01 14:34:15.457 [main] INFO  com.rhythm.dining.Test - No active profile set, falling back to default profiles: default
+2021-05-01 14:34:30.666 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-05-01 14:34:30.681 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-05-01 14:34:30.911 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 115ms. Found 0 Redis repository interfaces.
+2021-05-01 14:34:33.026 [main] INFO  o.springframework.cloud.context.scope.GenericScope - BeanFactory id=2a7991e6-aa0c-3970-98a3-5d768c832f04
+2021-05-01 14:34:55.894 [main] INFO  com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-05-01 14:34:55.918 [main] INFO  com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-05-01 14:34:57.713 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-01 14:35:06.831 [main] INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses Jersey
+2021-05-01 14:35:10.883 [main] INFO  o.s.cloud.netflix.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2021-05-01 14:35:11.281 [main] INFO  com.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2021-05-01 14:35:13.378 [main] INFO  c.n.discovery.provider.DiscoveryJerseyProvider - Using JSON encoding codec LegacyJacksonJson
+2021-05-01 14:35:13.378 [main] INFO  c.n.discovery.provider.DiscoveryJerseyProvider - Using JSON decoding codec LegacyJacksonJson
+2021-05-01 14:35:13.879 [main] INFO  c.n.discovery.provider.DiscoveryJerseyProvider - Using XML encoding codec XStreamXml
+2021-05-01 14:35:13.880 [main] INFO  c.n.discovery.provider.DiscoveryJerseyProvider - Using XML decoding codec XStreamXml
+2021-05-01 14:35:14.954 [main] INFO  c.n.d.shared.resolver.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2021-05-01 14:35:16.452 [main] INFO  com.netflix.discovery.DiscoveryClient - Disable delta property : false
+2021-05-01 14:35:16.453 [main] INFO  com.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2021-05-01 14:35:16.454 [main] INFO  com.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2021-05-01 14:35:16.454 [main] INFO  com.netflix.discovery.DiscoveryClient - Application is null : false
+2021-05-01 14:35:16.459 [main] INFO  com.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2021-05-01 14:35:16.459 [main] INFO  com.netflix.discovery.DiscoveryClient - Application version is -1: true
+2021-05-01 14:35:16.459 [main] INFO  com.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2021-05-01 14:35:17.137 [main] INFO  com.netflix.discovery.DiscoveryClient - The response status is 200
+2021-05-01 14:35:17.148 [main] INFO  com.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2021-05-01 14:35:17.151 [main] INFO  com.netflix.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2021-05-01 14:35:17.161 [main] INFO  com.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1619850917159 with initial instances count: 3
+2021-05-01 14:35:17.199 [main] INFO  o.s.c.n.e.serviceregistry.EurekaServiceRegistry - Registering application DINING with eureka with status UP
+2021-05-01 14:35:17.202 [main] INFO  com.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1619850917202, current=UP, previous=STARTING]
+2021-05-01 14:35:17.218 [DiscoveryClient-InstanceInfoReplicator-0] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084: registering service...
+2021-05-01 14:35:17.427 [DiscoveryClient-InstanceInfoReplicator-0] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084 - registration status: 204
+2021-05-01 14:35:17.780 [main] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2021-05-01 14:35:17.818 [main] INFO  com.rhythm.dining.Test - Started Test in 73.606 seconds (JVM running for 81.226)
+2021-05-01 14:35:18.735 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-05-01 14:35:19.261 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-05-01 14:35:19.816 [SpringContextShutdownHook] INFO  o.s.c.n.e.serviceregistry.EurekaServiceRegistry - Unregistering application DINING with eureka with status DOWN
+2021-05-01 14:35:19.823 [DiscoveryClient-InstanceInfoReplicator-0] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084: registering service...
+2021-05-01 14:35:19.843 [DiscoveryClient-InstanceInfoReplicator-0] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084 - registration status: 204
+2021-05-01 14:35:19.862 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-05-01 14:35:20.032 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-05-01 14:35:20.063 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-05-01 14:35:20.064 [SpringContextShutdownHook] INFO  com.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2021-05-01 14:35:23.080 [SpringContextShutdownHook] INFO  com.netflix.discovery.DiscoveryClient - Unregistering ...
+2021-05-01 14:35:23.102 [SpringContextShutdownHook] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084 - deregister  status: 200
+2021-05-01 14:35:23.125 [SpringContextShutdownHook] INFO  com.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2021-05-01 14:36:10.528 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.rhythm.dining.Test], using SpringBootContextLoader
+2021-05-01 14:36:10.557 [main] INFO  o.s.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.rhythm.dining.Test]: no resource found for suffixes {-context.xml, Context.groovy}.
+2021-05-01 14:36:12.340 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2021-05-01 14:36:12.461 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3012646b, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4a883b15, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@25641d39, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@7b36aa0c, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5824a83d, org.springframework.test.context.transaction.TransactionalTestExecutionListener@537f60bf, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@5677323c, org.springframework.test.context.event.EventPublishingTestExecutionListener@18df8434, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@65c7a252, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4d154ccd, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@229c6181, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4686afc2, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1e0b4072, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@791f145a]
+2021-05-01 14:36:19.711 [main] INFO  com.rhythm.dining.Test - No active profile set, falling back to default profiles: default
+2021-05-01 14:36:22.345 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-05-01 14:36:22.359 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-05-01 14:36:22.473 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 56ms. Found 0 Redis repository interfaces.
+2021-05-01 14:36:24.028 [main] INFO  o.springframework.cloud.context.scope.GenericScope - BeanFactory id=2a7991e6-aa0c-3970-98a3-5d768c832f04
+2021-05-01 14:36:38.737 [main] INFO  com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-05-01 14:36:38.767 [main] INFO  com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-05-01 14:36:40.681 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-01 14:36:47.501 [main] INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses Jersey
+2021-05-01 14:36:51.102 [main] INFO  o.s.cloud.netflix.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2021-05-01 14:36:51.620 [main] INFO  com.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2021-05-01 14:36:53.597 [main] INFO  c.n.discovery.provider.DiscoveryJerseyProvider - Using JSON encoding codec LegacyJacksonJson
+2021-05-01 14:36:53.599 [main] INFO  c.n.discovery.provider.DiscoveryJerseyProvider - Using JSON decoding codec LegacyJacksonJson
+2021-05-01 14:36:54.055 [main] INFO  c.n.discovery.provider.DiscoveryJerseyProvider - Using XML encoding codec XStreamXml
+2021-05-01 14:36:54.055 [main] INFO  c.n.discovery.provider.DiscoveryJerseyProvider - Using XML decoding codec XStreamXml
+2021-05-01 14:36:54.872 [main] INFO  c.n.d.shared.resolver.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2021-05-01 14:36:56.442 [main] INFO  com.netflix.discovery.DiscoveryClient - Disable delta property : false
+2021-05-01 14:36:56.443 [main] INFO  com.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2021-05-01 14:36:56.443 [main] INFO  com.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2021-05-01 14:36:56.443 [main] INFO  com.netflix.discovery.DiscoveryClient - Application is null : false
+2021-05-01 14:36:56.443 [main] INFO  com.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2021-05-01 14:36:56.444 [main] INFO  com.netflix.discovery.DiscoveryClient - Application version is -1: true
+2021-05-01 14:36:56.444 [main] INFO  com.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2021-05-01 14:36:57.169 [main] INFO  com.netflix.discovery.DiscoveryClient - The response status is 200
+2021-05-01 14:36:57.185 [main] INFO  com.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2021-05-01 14:36:57.193 [main] INFO  com.netflix.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2021-05-01 14:36:57.217 [main] INFO  com.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1619851017210 with initial instances count: 3
+2021-05-01 14:36:57.285 [main] INFO  o.s.c.n.e.serviceregistry.EurekaServiceRegistry - Registering application DINING with eureka with status UP
+2021-05-01 14:36:57.286 [main] INFO  com.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1619851017286, current=UP, previous=STARTING]
+2021-05-01 14:36:57.302 [DiscoveryClient-InstanceInfoReplicator-0] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084: registering service...
+2021-05-01 14:36:57.573 [DiscoveryClient-InstanceInfoReplicator-0] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084 - registration status: 204
+2021-05-01 14:36:57.853 [main] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2021-05-01 14:36:57.887 [main] INFO  com.rhythm.dining.Test - Started Test in 45.038 seconds (JVM running for 51.309)
+2021-05-01 14:36:58.807 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-05-01 14:36:59.489 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-05-01 14:36:59.777 [main] INFO  com.rhythm.dining.Test - roles: [Dining(id=1, name=餐厅1, place=重庆市/重庆市/涪陵区, userId=2)]
+2021-05-01 14:36:59.814 [SpringContextShutdownHook] INFO  o.s.c.n.e.serviceregistry.EurekaServiceRegistry - Unregistering application DINING with eureka with status DOWN
+2021-05-01 14:36:59.819 [DiscoveryClient-InstanceInfoReplicator-0] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084: registering service...
+2021-05-01 14:36:59.839 [DiscoveryClient-InstanceInfoReplicator-0] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084 - registration status: 204
+2021-05-01 14:36:59.846 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-05-01 14:36:59.997 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-05-01 14:37:00.063 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-05-01 14:37:00.065 [SpringContextShutdownHook] INFO  com.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2021-05-01 14:37:03.075 [SpringContextShutdownHook] INFO  com.netflix.discovery.DiscoveryClient - Unregistering ...
+2021-05-01 14:37:03.092 [SpringContextShutdownHook] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084 - deregister  status: 200
+2021-05-01 14:37:03.115 [SpringContextShutdownHook] INFO  com.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient

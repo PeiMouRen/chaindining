@@ -40,6 +40,6 @@ public class User implements Serializable {
 
     private Integer sex;
 
-    @TableField(exist = false)
+    @TableField(value = "diningId")
     private Integer diningId;
 }

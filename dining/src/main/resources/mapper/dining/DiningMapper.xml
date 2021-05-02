@@ -2,4 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.rhythm.dining.mapper.DiningMapper">
 
+    <select id="getDinings" resultType="com.rhythm.dining.entity.Dining">
+        select d.*, u.id as userId from dining d left join user u on d.id = u.diningId and u.level = 2
+    </select>
+
+    <select id="getDiningByUserId" resultType="com.rhythm.dining.entity.Dining">
+        select *, #{userId} as userId from dining where id in(select diningId from user where id = #{userId})
+    </select>
 </mapper>

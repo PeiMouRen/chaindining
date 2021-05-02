@@ -84,8 +84,8 @@ public class DiningController {
             return Result.error();
         } else {
             if (UserLevel.ADMIN.getLevel() == user.getLevel()) {
-                page = diningService.page(page);
-            } else if (UserLevel.MANAGER.getLevel() == user.getLevel()) {
+                page = diningService.getDinings(page);
+            } else {
                 page.setRecords(diningService.getDiningByManageId(user.getId()));
                 page.setTotal(1);
             }

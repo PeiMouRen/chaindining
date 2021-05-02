@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
-	<title>产品管理</title>
+	<title>菜品管理</title>
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,21 +10,22 @@
 	<!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
 <body>
+<input type="hidden" id="user_level" th:value="${userLevel}">
 <table class="layui-hide" id="test" lay-filter="test"></table>
 
 <div style="display: none;" id="product_form">
 	<form class="layui-form" onsubmit="return false;" lay-filter="product_form">
 		<input type="text" name="id" id="product_id" value="" style="display: none" />
 		<div class="layui-form-item">
-			<label class="layui-form-label">产品类型</label>
+			<label class="layui-form-label">菜品类型</label>
 			<div class="layui-input-block">
 				<div id="product_type" class="xm-select-demo"></div>
 			</div>
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label">产品名称</label>
+			<label class="layui-form-label">菜品名称</label>
 			<div class="layui-input-block">
-				<input type="text" name="name" required  lay-verify="required" placeholder="请输入产品名称" autocomplete="off" class="layui-input">
+				<input type="text" name="name" required  lay-verify="required" placeholder="请输入菜品名称" autocomplete="off" class="layui-input">
 			</div>
 		</div>
 		<div class="layui-form-item">
@@ -40,15 +41,15 @@
 	<form class="layui-form" onsubmit="return false;" lay-filter="inStorage_form">
 		<input type="hidden" id="inStorage_product_id" name="productId" value="">
 		<div class="layui-form-item">
-			<label class="layui-form-label">选择仓库</label>
+			<label class="layui-form-label">选择餐厅</label>
 			<div class="layui-input-block">
-				<div id="inStorage_rpst_select" class="xm-select-demo"></div>
+				<div id="inStorage_dining_select" class="xm-select-demo"></div>
 			</div>
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label">入库数量</label>
+			<label class="layui-form-label">采购数量</label>
 			<div class="layui-input-block">
-				<input type="text" name="productNum" required id="inStorage_product_num"  lay-verify="required|number" placeholder="请输入入库数量" autocomplete="off" class="layui-input">
+				<input type="text" name="productNum" required id="inStorage_product_num"  lay-verify="required|number" placeholder="请输入采购数量" autocomplete="off" class="layui-input">
 			</div>
 		</div>
 		<div class="layui-form-item layui-form-text">
@@ -67,14 +68,13 @@
 
 <script type="text/html" id="toolbarDemo">
 	<div class="layui-btn-container">
-		<button class="layui-btn layui-btn-sm" lay-event="addProduct">新增产品</button>
+		<button class="layui-btn layui-btn-sm" lay-event="addProduct">新增菜品</button>
 	</div>
 </script>
-<input type="hidden" id="user_level" th:value="${userLevel}">
 <script type="text/html" id="barDemo">
-	<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-	<a class="layui-btn layui-btn-xs" lay-event="inStorage">入库</a>
-	{{# if($('#user_level').val() == 1) { }}
+	<a class="layui-btn layui-btn-xs" lay-event="inStorage">采购</a>
+	{{# if($('#user_level').val() == 1 || $('#user_level').val() == 2) { }}
+		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	{{# } }}
 </script>
@@ -89,21 +89,22 @@
 		var table = layui.table;
 		var form = layui.form;
 		var layer = layui.layer;
-		var inStorageRpstSelect;
+		var inStorageDiningSelect;
 		var productTypeSelect;
-		var rpstDatas = [];
+		var diningDatas = [];
 		var productTypes = [];
+		var diningSelectDisabled = $('#user_level').val() == 1? false : true;
 		$.ajax({
 			type: "get",
-			url: "/rpst/rpsts",
+			url: "/dining/dinings",
 			dataType: "json",
 			async: false,
 			success: function(result) {
 				if (result.code == 200) {
 					for (var i = 0; i < result.data.length; i++) {
-						var rpst = result.data[i];
-						var rpstData = {name : rpst.name, value : rpst.id, selected : false};
-						rpstDatas.push(rpstData);
+						var dining = result.data[i];
+						var diningData = {name : dining.name, value : dining.id, selected : false};
+						diningDatas.push(diningData);
 					}
 				}
 			}
@@ -122,10 +123,10 @@
 				}
 			}
 		})
-		inStorageRpstSelect = xmSelect.render({
-			el: '#inStorage_rpst_select',
-			name: 'rpstIds',
-			data: rpstDatas,
+		inStorageDiningSelect = xmSelect.render({
+			el: '#inStorage_dining_select',
+			name: 'diningIds',
+			data: diningDatas,
 			filterable: true,
 			size: 'mini',
 			paging: true,
@@ -133,9 +134,13 @@
 				show: true,
 			},
 			radio: true,
+			disabled: diningSelectDisabled,
 			clickClose: true,
 			direction: 'down'
 		});
+		if (diningSelectDisabled) {
+			inStorageDiningSelect.setValue([diningDatas[0].value]);
+		}
 		productTypeSelect = xmSelect.render({
 			el: '#product_type',
 			name: 'type',
@@ -144,7 +149,7 @@
 			filterDone: function(val, list) {
 				if (list.length == 0) {
 
-					layer.confirm('产品类型【' + val + '】不存在，是否创建？',
+					layer.confirm('菜品类型【' + val + '】不存在，是否创建？',
 							{
 								icon: 3,
 								title:'提示'
@@ -176,9 +181,9 @@
 			,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
 			,defaultToolbar: ['filter', 'exports', 'print']
 			,cols: [[
-				{field:'id', width:120, title: '产品编号', sort: true, align: 'center'}
-				,{field:'type', width:100, title: '产品类型', align: 'center'}
-				,{field:'name', width:160, title: '产品名称', align: 'center'}
+				{field:'id', width:120, title: '菜品编号', sort: true, align: 'center'}
+				,{field:'type', width:100, title: '菜品类型', align: 'center'}
+				,{field:'name', width:160, title: '菜品名称', align: 'center'}
 				,{width:200,title:'操作', toolbar:'#barDemo', align: 'center'}
 			]]
 			,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
@@ -212,7 +217,7 @@
 					productTypeSelect.setValue([]);
 					layer.open({
 						type: 1,
-						title: '新增产品',
+						title: '新增菜品',
 						area: ['400px', '400px'],
 						content: $('#product_form')
 					});
@@ -223,7 +228,7 @@
 		//监听工具条
 		table.on('tool(test)', function(obj){
 			if(obj.event === 'del'){
-				layer.confirm('确定删除该产品？', function(index){
+				layer.confirm('确定删除该菜品？', function(index){
 					$.ajax({
 						type: "delete",
 						url: "/product/product/" + obj.data.id,
@@ -243,17 +248,19 @@
 				productTypeSelect.setValue([obj.data.type]);
 				layer.open({
 					type: 1,
-					title: '编辑产品信息',
+					title: '编辑菜品信息',
 					area: ['400px', '400px'],
 					content: $('#product_form')
 				});
 			} else if(obj.event === 'inStorage') {
 				$('#inStorage_product_id').val(obj.data.id);
-				inStorageRpstSelect.setValue([]);
+				if (!diningSelectDisabled) {
+					inStorageDiningSelect.setValue([]);
+				}
 				$('#inStorage_form form')[0].reset();
 				layer.open({
 					type: 1,
-					title: '产品入库',
+					title: '菜品采购',
 					area: ['410px', '350px'],
 					scrollbar: false,
 					content: $('#inStorage_form')
@@ -294,7 +301,7 @@
 		});
 		form.on('submit(inStorage_form_submit)', function(data) {
 			var data = {};
-			data.rpstId = inStorageRpstSelect.getValue()[0].value;
+			data.diningId = inStorageDiningSelect.getValue()[0].value;
 			data.productId = $('#inStorage_product_id').val();
 			data.productNum = $('#inStorage_product_num').val();
 			data.operate = 1;
@@ -308,7 +315,7 @@
 				success: function(result) {
 					if (result.code == 200) {
 						layer.closeAll();
-						layer.msg('产品入库成功！', {icon : 1});
+						layer.msg('菜品采购成功！', {icon : 1});
 					} else if (result.code == 201) {
 						layer.closeAll();
 						layer.msg(result.message, {icon : 2});

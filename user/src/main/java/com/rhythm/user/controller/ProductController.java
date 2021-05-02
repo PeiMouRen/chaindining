@@ -19,6 +19,11 @@ public class ProductController {
     @Autowired
     private IProductService productService;
 
+    @GetMapping(value = "/productTypes")
+    public Result productTypes() {
+        return productService.getproductTypes();
+    }
+
     @PutMapping(value = "/inventory")
     Result updateInventory(@RequestBody Map<String, String> param) {
         log.info("更新库存：");
@@ -26,9 +31,9 @@ public class ProductController {
         return productService.updateInventory(param);
     }
 
-    @GetMapping(value = "/inventory/{rpstId}")
-    Result getInventory(@SpringQueryMap Page page, @PathVariable Integer rpstId) {
-        return productService.getInventory(page, rpstId);
+    @GetMapping(value = "/inventory/{diningId}")
+    Result getInventory(@SpringQueryMap Page page, @PathVariable Integer diningId) {
+        return productService.getInventory(page, diningId);
     }
 
     @PostMapping(value = "/product")

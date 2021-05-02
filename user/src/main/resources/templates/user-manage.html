@@ -11,6 +11,7 @@
 </head>
 <body>
 
+<input type="hidden" id="user_level" th:value="${userLevel}">
 <table class="layui-hide" id="test" lay-filter="test"></table>
 
 <div style="display: none" id="user_form">
@@ -30,10 +31,10 @@
 			</div>
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label">等级</label>
+			<label class="layui-form-label">身份</label>
 			<div class="layui-input-block">
 				<input type="radio" name="level" value="2" title="管理员">
-				<input type="radio" name="level" value="3" title="服务员" checked>
+				<input type="radio" name="level" value="3" title="服务员" checked >
 			</div>
 		</div>
 		<div class="layui-form-item">
@@ -66,12 +67,13 @@
 
 <script type="text/html" id="toolbarDemo">
 	<div class="layui-btn-container">
+		<div id="dining_select1" style="display: inline-block;width: 200px;margin-bottom: -10px;margin-right: 10px;" class="xm-select-demo"></div>
 		<button class="layui-btn layui-btn-sm" lay-event="addUser">新增用户</button>
 	</div>
 </script>
 
 <script type="text/html" id="barDemo">
-	{{# if(d.level != 1) { }}
+	{{# if($('#user_level').val() == 1 || d.level != 2) { }}
 	<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 	<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	{{# } }}
@@ -88,8 +90,26 @@
 </script>
 
 <script type="text/html" id="diningTpl">
-	{{ diningDatas.filter(item => item.value == d.diningId)[0].name }}
+	{{#
+		var temp;
+		var dining = diningDatas.filter(item => item.value == d.diningId);
+		if (dining.length == 0) {
+			temp = '无';
+		}else {
+			temp = dining[0].name
+		}
+	}}
+	{{temp}}
 </script>
+
+<script type="text/html" id="levelTpl">
+	{{#  if(d.level == 2){ }}
+	管理员
+	{{#  } else if(d.level == 3) { }}
+	服务员
+	{{#  } else { }}
+	未知
+	{{# } }}</script>
 
 <script src="/js/jquery-3.6.0.min.js" charset="utf-8"></script>
 <script src="/layui/layui.js" charset="utf-8"></script>
@@ -97,7 +117,13 @@
 <!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
 
 <script th:inline="none">
+	var diningSelectDisabled = $('#user_level').val() == 1? false : true;
+	var diningId = diningSelectDisabled? 0 : -1;
+	if (diningSelectDisabled == true) {
+		$('.layui-input-block input[name="level"]').attr('disabled', true);
+	}
 	var diningDatas = [];
+	var diningSelect1;
 	$.ajax({
 		type: "get",
 		url: "/dining/dinings",
@@ -122,6 +148,7 @@
 		size: 'mini',
 		paging: true,
 		clickClose: true,
+		disabled: diningSelectDisabled,
 		direction: 'down'
 	});
 
@@ -133,7 +160,7 @@
 
 		var userTable = table.render({
 			elem: '#test'
-			,url:'/user/users'
+			,url:'/user/users/' + diningId
 			,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
 			,defaultToolbar: ['filter', 'exports', 'print']
 			,cols: [[
@@ -142,7 +169,8 @@
 				,{field:'sex', width:80, title: '性别', sort: true, templet: '#sexTpl', align: 'center'}
 				,{field:'phone', width:160, title: '联系方式', align: 'center'}
 				,{field:'email', width:200, title: '邮箱', align: 'center'}
-				,{field:'diningId', title: '所属餐厅', minWidth: 150, sort: true, templet: '#diningTpl',align: 'center'}
+				,{field:'diningId', title: '所属餐厅', minWidth: 150, templet: '#diningTpl',align: 'center'}
+				,{field:'level', title: '身份', minWidth: 150,sort: true, templet: '#levelTpl',align: 'center'}
 				,{width:200,title:'操作', toolbar:'#barDemo', align: 'center'}
 			]]
 			,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
@@ -163,6 +191,42 @@
 				,countName: 'total' //数据总数的字段名称，默认：count
 				,dataName: 'data' //数据列表的字段名称，默认：data
 			}
+			,done: function(res, curr, count) {
+				diningSelect1 = xmSelect.render({
+					el: '#dining_select1',
+					name: 'diningId',
+					data: diningDatas,
+					filterable: true,
+					size: 'mini',
+					paging: true,
+					radio: true,
+					clickClose: true,
+					tips: '请选择餐厅',
+					clickClose: true,
+					disabled: diningSelectDisabled,
+					direction: 'down',
+					on: function({ arr, change, isAdd }) {
+						if (arr.length > 0) {
+							diningId = arr[0].value;
+						} else {
+							diningId = -1;
+						}
+						userTable.reload({url:'/user/users/' + diningId}, false);
+					}
+				});
+
+				if (diningSelectDisabled == true) {
+					diningSelect.setValue([diningDatas[0]]);
+					diningSelect1.setValue([diningDatas[0]]);
+				} else {
+					if (diningId != -1) {
+						diningSelect1.setValue([diningId]);
+					} else {
+						diningSelect1.setValue([]);
+					}
+
+				}
+			}
 		});
 
 		//头工具栏事件
@@ -170,7 +234,9 @@
 			switch(obj.event){
 				case 'addUser':
 					$('#user_form form')[0].reset();
-					diningSelect.setValue([]);
+					if (diningSelectDisabled == false) {
+						diningSelect.setValue([]);
+					}
 					layer.open({
 						type: 1,
 						title: '新增用户',
@@ -201,7 +267,12 @@
 				});
 			} else if(obj.event === 'edit'){
 				form.val('user_form', obj.data);
-				diningSelect.setValue(obj.data.diningId);
+				if (obj.data.diningId != null) {
+					diningSelect.setValue([obj.data.diningId]);
+				} else {
+					diningSelect.setValue([]);
+				}
+
 				layer.open({
 					type: 1,
 					title: '编辑用户信息',

@@ -33,4 +33,5 @@ public class Dining implements Serializable {
 
     @TableField(exist = false)
     private Integer userId;
+
 }

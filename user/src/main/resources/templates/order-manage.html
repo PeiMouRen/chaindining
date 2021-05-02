@@ -15,9 +15,9 @@
 <input type="hidden" id="user_level" th:value="${userLevel}">
 <script type="text/html" id="orderTypeTpl">
 	{{#  if(d.type == 1){ }}
-	入库订单
+	采购订单
 	{{#  } else if(d.type == -1) { }}
-	出库订单
+	点餐订单
 	{{#  } else { }}
 	未知
 	{{# } }}
@@ -43,7 +43,7 @@
 			,cols: [[
 				{field:'id', width:100, title: '订单编号', sort: true, align: 'center'}
 				,{field:'type', width:100, title: '订单类型', templet: '#orderTypeTpl', align: 'center'}
-				,{field:'rpstName', width:100, title: '操作仓库', align: 'center'}
+				,{field:'diningName', width:100, title: '操作餐厅', align: 'center'}
 				,{field:'productName', width:100, title: '操作产品', align: 'center'}
 				,{field:'userName', width:100, title: '操作用户', align: 'center'}
 				,{field:'productNum', width:100, title: '操作产品数量', sort: true, align: 'center'}

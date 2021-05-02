@@ -5,8 +5,11 @@ layui.use(['layer', 'element'], function() {
 
     // 监听左侧导航
     element.on('nav(left_nav)', function(elem) {
-        var url = elem.attr('data-url');
         var id = elem.attr('data-id');
+        if (id == -1) {
+            return;
+        }
+        var url = elem.attr('data-url');
         var test = elem.attr('data-text');
 
         var isActive = $('.main-layout-tab .layui-tab-title').find("li[lay-id=" + id + "]");

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
-	<title>仓库信息</title>
+	<title>餐厅信息</title>
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,6 +11,7 @@
 </head>
 <body>
 
+<input type="hidden" id="user_level" th:value="${userLevel}">
 <table class="layui-hide" id="test" lay-filter="test"></table>
 
 <div style="display: none; overflow: hidden" id="storage_form">
@@ -18,9 +19,9 @@
 		<input type="hidden" id="storage_product_id" name="productId" value="">
 		<input type="hidden" id="storage_product_ope" name="productOpe" value="">
 		<div class="layui-form-item">
-			<label class="layui-form-label" id="storage_product_des">入库数量</label>
+			<label class="layui-form-label" id="storage_product_des">采购数量</label>
 			<div class="layui-input-block">
-				<input type="text" name="productNum" required  lay-verify="required|number" id="storage_product_pla" placeholder="请输入入库数量" autocomplete="off" class="layui-input">
+				<input type="text" name="productNum" required  lay-verify="required|number" id="storage_product_pla" placeholder="请输入采购数量" autocomplete="off" class="layui-input">
 			</div>
 		</div>
 		<div class="layui-form-item layui-form-text">
@@ -39,13 +40,12 @@
 
 <script type="text/html" id="toolbarDemo">
 	<div class="layui-btn-container">
-		<div id="rpst_select" style="display: inline-block;width: 200px;margin-bottom: -10px;margin-right: 10px;" class="xm-select-demo"></div>
+		<div id="dining_select" style="display: inline-block;width: 200px;margin-bottom: -10px;margin-right: 10px;" class="xm-select-demo"></div>
 	</div>
 </script>
-<input type="hidden" id="user_level" th:value="${userLevel}">
 <script type="text/html" id="barDemo">
-	<a class="layui-btn layui-btn-xs" lay-event="inStorage">入库</a>
-	<a class="layui-btn layui-btn-xs" lay-event="outStorage">出库</a>
+	<a class="layui-btn layui-btn-xs" lay-event="inStorage">采购</a>
+	<a class="layui-btn layui-btn-xs" lay-event="outStorage">点餐</a>
 </script>
 
 <script src="/js/jquery-3.6.0.min.js" charset="utf-8"></script>
@@ -54,26 +54,28 @@
 <!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
 
 <script th:inline="none">
+	var diningSelectDisabled = $('#user_level').val() == 1? false : true;
 	var isLoad = false;
-	var rpstId = -1;
-	var rpstSelect;
-	var rpstDatas = [];
+	var diningId = -1;
+	var diningSelect;
+	var diningDatas = [];
 	$.ajax({
 		type: "get",
-		url: "/rpst/rpsts",
+		url: "/dining/dinings",
 		dataType: "json",
 		async: false,
 		success: function(result) {
 			if (result.code == 200) {
 				for (var i = 0; i < result.data.length; i++) {
-					var rpst = result.data[i];
-					var rpstData = {name : rpst.name, value : rpst.id, selected : false};
-					rpstDatas.push(rpstData);
+					var dining = result.data[i];
+					var diningData = {name : dining.name, value : dining.id, selected : false};
+					diningDatas.push(diningData);
 				}
 			}
 		}
-	})
 
+	})
+	console.log(diningDatas)
 
 	layui.use(['table', 'form', 'layer'], function(){
 		var table = layui.table;
@@ -82,13 +84,13 @@
 
 		var productTable = table.render({
 			elem: '#test'
-			,url:'/product/inventory/' + rpstId
+			,url:'/product/inventory/' + diningId
 			,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
 			,defaultToolbar: ['filter', 'exports', 'print']
 			,cols: [[
-				{field:'id', width:120, title: '产品编号', sort: true, align: 'center'}
-				,{field:'type', width:160, title: '产品类型', align: 'center'}
-				,{field:'name', width:160, title: '产品名称', align: 'center'}
+				{field:'id', width:120, title: '菜品编号', sort: true, align: 'center'}
+				,{field:'type', width:160, title: '菜品类型', align: 'center'}
+				,{field:'name', width:160, title: '菜品名称', align: 'center'}
 				,{field:'productNum', width:120, title: '库存数量', sort: true, align: 'center'}
 				,{width:200,title:'操作', toolbar:'#barDemo', align: 'center'}
 			]]
@@ -111,33 +113,34 @@
 				,dataName: 'data' //数据列表的字段名称，默认：data
 			}
 			,done: function(res, curr, count) {
-				rpstSelect = xmSelect.render({
-					el: '#rpst_select',
-					name: 'rpstId',
-					data: rpstDatas,
+				diningSelect = xmSelect.render({
+					el: '#dining_select',
+					name: 'diningId',
+					data: diningDatas,
 					filterable: true,
 					size: 'mini',
 					paging: true,
 					radio: true,
 					clickClose: true,
-					tips: '请选择仓库',
+					tips: '请选择餐厅',
 					clickClose: true,
+					disabled: diningSelectDisabled,
 					direction: 'down',
 					on: function({ arr, change, isAdd }) {
 						if (arr.length > 0) {
-							rpstId = arr[0].value;
+							diningId = arr[0].value;
 						} else {
-							rpstId = -1;
+							diningId = -1;
 						}
-						productTable.reload({url:'/product/inventory/' + rpstId}, false);
+						productTable.reload({url:'/product/inventory/' + diningId}, false);
 					}
 				});
 
-				if (rpstId != -1) {
-					rpstSelect.setValue([rpstId]);
-				} else if (rpstSelect.getValue().length == 0 && rpstDatas.length > 0) {
-					rpstId = rpstDatas[0].value;
-					productTable.reload({url:'/product/inventory/' + rpstId}, false);
+				if (diningId != -1) {
+					diningSelect.setValue([diningId]);
+				} else if (diningSelect.getValue().length == 0 && diningDatas.length > 0) {
+					diningId = diningDatas[0].value;
+					productTable.reload({url:'/product/inventory/' + diningId}, false);
 				}
 
 			}
@@ -148,13 +151,13 @@
 			if(obj.event === 'inStorage') {
 				$('#storage_product_ope').val(1);
 				$('#storage_product_id').val(obj.data.id);
-				$('#storage_product_des').val("入库数量");
-				$('#storage_product_pla').attr('placeholder', '请输入入库数量');
+				$('#storage_product_des').val("采购数量");
+				$('#storage_product_pla').attr('placeholder', '请输入采购数量');
 				$('#storage_product_pla').val('');
 				$('#productDes').val('');
 				layer.open({
 					type: 1,
-					title: '产品入库',
+					title: '菜品采购',
 					area: ['410px', '350px'],
 					scrollbar: false,
 					content: $('#storage_form')
@@ -162,13 +165,13 @@
 			} else if(obj.event === 'outStorage') {
 				$('#storage_product_ope').val(-1);
 				$('#storage_product_id').val(obj.data.id);
-				$('#storage_product_des').val("出库数量");
-				$('#storage_product_pla').attr('placeholder', '请输入出库数量');
+				$('#storage_product_des').val("点餐数量");
+				$('#storage_product_pla').attr('placeholder', '请输入点餐数量');
 				$('#storage_product_pla').val('');
 				$('#productDes').val('');
 				layer.open({
 					type: 1,
-					title: '产品出库',
+					title: '菜品点餐',
 					area: ['410px', '350px'],
 					scrollbar: false,
 					content: $('#storage_form')
@@ -180,12 +183,12 @@
 			var operate = $('#storage_product_ope').val();
 			var msg = '';
 			if (operate == 1) {
-				msg = '产品入库成功！';
+				msg = '菜品采购成功！';
 			} else {
-				msg = '产品出库成功！';
+				msg = '菜品点餐成功！';
 			}
 			var data = {};
-			data.rpstId = rpstSelect.getValue()[0].value;
+			data.diningId = diningSelect.getValue()[0].value;
 			data.productId = $('#storage_product_id').val();
 			data.productNum = $('#storage_product_pla').val();
 			data.operate = operate;

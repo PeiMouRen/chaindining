@@ -1,0 +1,198 @@
+2021-05-02 12:01:22.347 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.rhythm.dining.Test], using SpringBootContextLoader
+2021-05-02 12:01:22.372 [main] INFO  o.s.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.rhythm.dining.Test]: no resource found for suffixes {-context.xml, Context.groovy}.
+2021-05-02 12:01:23.852 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2021-05-02 12:01:23.896 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@20140db9, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1e6a3214, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@368247b9, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1a6d8329, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1a942c18, org.springframework.test.context.transaction.TransactionalTestExecutionListener@55a147cc, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@71ba6d4e, org.springframework.test.context.event.EventPublishingTestExecutionListener@738dc9b, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3c77d488, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@63376bed, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4145bad8, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@d86a6f, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2892d68, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@5ab956d7]
+2021-05-02 12:01:27.805 [main] INFO  com.rhythm.dining.Test - No active profile set, falling back to default profiles: default
+2021-05-02 12:01:29.311 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-05-02 12:01:29.319 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-05-02 12:01:29.387 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34ms. Found 0 Redis repository interfaces.
+2021-05-02 12:01:30.077 [main] INFO  o.springframework.cloud.context.scope.GenericScope - BeanFactory id=0f22e22d-11cb-3606-9853-bdee8f3e3b73
+2021-05-02 12:01:33.127 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-05-02 12:02:41.469 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.rhythm.dining.Test], using SpringBootContextLoader
+2021-05-02 12:02:41.513 [main] INFO  o.s.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.rhythm.dining.Test]: no resource found for suffixes {-context.xml, Context.groovy}.
+2021-05-02 12:02:42.639 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2021-05-02 12:02:42.687 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1c7696c6, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@60099951, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@20140db9, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1e6a3214, org.springframework.test.context.support.DirtiesContextTestExecutionListener@368247b9, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1a6d8329, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1a942c18, org.springframework.test.context.event.EventPublishingTestExecutionListener@55a147cc, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@71ba6d4e, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@738dc9b, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3c77d488, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@63376bed, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@4145bad8, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@d86a6f]
+2021-05-02 12:02:46.564 [main] INFO  com.rhythm.dining.Test - No active profile set, falling back to default profiles: default
+2021-05-02 12:02:47.909 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-05-02 12:02:47.915 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-05-02 12:02:47.979 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31ms. Found 0 Redis repository interfaces.
+2021-05-02 12:02:48.662 [main] INFO  o.springframework.cloud.context.scope.GenericScope - BeanFactory id=0f22e22d-11cb-3606-9853-bdee8f3e3b73
+2021-05-02 12:02:51.700 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-05-02 12:10:21.417 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.rhythm.dining.Test], using SpringBootContextLoader
+2021-05-02 12:10:21.443 [main] INFO  o.s.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.rhythm.dining.Test]: no resource found for suffixes {-context.xml, Context.groovy}.
+2021-05-02 12:10:22.620 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2021-05-02 12:10:22.664 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3c77d488, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@63376bed, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4145bad8, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@d86a6f, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2892d68, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5ab956d7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3646a422, org.springframework.test.context.event.EventPublishingTestExecutionListener@750e2b97, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3e27aa33, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2e385cce, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2ddc9a9f, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@298a5e20, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2a7f1f10, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@46cdf8bd]
+2021-05-02 12:10:26.622 [main] INFO  com.rhythm.dining.Test - No active profile set, falling back to default profiles: default
+2021-05-02 12:10:28.090 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-05-02 12:10:28.098 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-05-02 12:10:28.165 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 33ms. Found 0 Redis repository interfaces.
+2021-05-02 12:10:28.927 [main] INFO  o.springframework.cloud.context.scope.GenericScope - BeanFactory id=36b560d1-9647-324a-8597-f95bf96f59be
+2021-05-02 12:10:36.514 [main] INFO  com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-05-02 12:10:36.529 [main] INFO  com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-05-02 12:10:36.987 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-02 12:10:39.574 [main] INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses Jersey
+2021-05-02 12:10:41.054 [main] INFO  o.s.cloud.netflix.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2021-05-02 12:10:41.491 [main] INFO  com.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2021-05-02 12:10:42.626 [main] INFO  c.n.discovery.provider.DiscoveryJerseyProvider - Using JSON encoding codec LegacyJacksonJson
+2021-05-02 12:10:42.626 [main] INFO  c.n.discovery.provider.DiscoveryJerseyProvider - Using JSON decoding codec LegacyJacksonJson
+2021-05-02 12:10:42.858 [main] INFO  c.n.discovery.provider.DiscoveryJerseyProvider - Using XML encoding codec XStreamXml
+2021-05-02 12:10:42.858 [main] INFO  c.n.discovery.provider.DiscoveryJerseyProvider - Using XML decoding codec XStreamXml
+2021-05-02 12:10:43.193 [main] INFO  c.n.d.shared.resolver.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2021-05-02 12:10:43.920 [main] INFO  com.netflix.discovery.DiscoveryClient - Disable delta property : false
+2021-05-02 12:10:43.920 [main] INFO  com.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2021-05-02 12:10:43.920 [main] INFO  com.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2021-05-02 12:10:43.921 [main] INFO  com.netflix.discovery.DiscoveryClient - Application is null : false
+2021-05-02 12:10:43.921 [main] INFO  com.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2021-05-02 12:10:43.921 [main] INFO  com.netflix.discovery.DiscoveryClient - Application version is -1: true
+2021-05-02 12:10:43.921 [main] INFO  com.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2021-05-02 12:10:44.296 [main] INFO  com.netflix.discovery.DiscoveryClient - The response status is 200
+2021-05-02 12:10:44.300 [main] INFO  com.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2021-05-02 12:10:44.305 [main] INFO  com.netflix.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2021-05-02 12:10:44.312 [main] INFO  com.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1619928644311 with initial instances count: 5
+2021-05-02 12:10:44.324 [main] INFO  o.s.c.n.e.serviceregistry.EurekaServiceRegistry - Registering application DINING with eureka with status UP
+2021-05-02 12:10:44.324 [main] INFO  com.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1619928644324, current=UP, previous=STARTING]
+2021-05-02 12:10:44.330 [DiscoveryClient-InstanceInfoReplicator-0] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084: registering service...
+2021-05-02 12:10:44.436 [DiscoveryClient-InstanceInfoReplicator-0] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084 - registration status: 204
+2021-05-02 12:10:44.915 [main] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2021-05-02 12:10:44.930 [main] INFO  com.rhythm.dining.Test - Started Test in 22.115 seconds (JVM running for 25.6)
+2021-05-02 12:10:45.660 [main] INFO  com.netflix.config.ChainedDynamicProperty - Flipping property: user.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2021-05-02 12:10:45.726 [main] INFO  com.netflix.util.concurrent.ShutdownEnabledTimer - Shutdown hook installed for: NFLoadBalancer-PingTimer-user
+2021-05-02 12:10:45.726 [main] INFO  com.netflix.loadbalancer.BaseLoadBalancer - Client: user instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=user,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+2021-05-02 12:10:45.741 [main] INFO  c.n.loadbalancer.DynamicServerListLoadBalancer - Using serverListUpdater PollingServerListUpdater
+2021-05-02 12:10:45.797 [main] INFO  com.netflix.config.ChainedDynamicProperty - Flipping property: user.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2021-05-02 12:10:45.800 [main] INFO  c.n.loadbalancer.DynamicServerListLoadBalancer - DynamicServerListLoadBalancer for client user initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=user,current list of Servers=[DESKTOP-F7K69CA:8083],Load balancer stats=Zone stats: {defaultzone=[Zone:defaultzone;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:DESKTOP-F7K69CA:8083;	Zone:defaultZone;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:org.springframework.cloud.netflix.ribbon.eureka.DomainExtractingServerList@60729135
+2021-05-02 12:10:46.664 [Thread-334] INFO  com.netflix.loadbalancer.PollingServerListUpdater - Shutting down the Executor Pool for PollingServerListUpdater
+2021-05-02 12:10:46.665 [SpringContextShutdownHook] INFO  o.s.c.n.e.serviceregistry.EurekaServiceRegistry - Unregistering application DINING with eureka with status DOWN
+2021-05-02 12:10:46.667 [DiscoveryClient-InstanceInfoReplicator-0] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084: registering service...
+2021-05-02 12:10:46.689 [DiscoveryClient-InstanceInfoReplicator-0] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084 - registration status: 204
+2021-05-02 12:10:46.691 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-05-02 12:10:46.835 [SpringContextShutdownHook] INFO  com.netflix.util.concurrent.ShutdownEnabledTimer - Shutdown hook removed for: NFLoadBalancer-PingTimer-user
+2021-05-02 12:10:46.840 [SpringContextShutdownHook] INFO  com.netflix.util.concurrent.ShutdownEnabledTimer - Exception caught (might be ok if at shutdown)
+java.lang.IllegalStateException: Shutdown in progress
+	at java.lang.ApplicationShutdownHooks.remove(ApplicationShutdownHooks.java:82)
+	at java.lang.Runtime.removeShutdownHook(Runtime.java:239)
+	at com.netflix.util.concurrent.ShutdownEnabledTimer.cancel(ShutdownEnabledTimer.java:70)
+	at com.netflix.loadbalancer.BaseLoadBalancer.cancelPingTask(BaseLoadBalancer.java:632)
+	at com.netflix.loadbalancer.BaseLoadBalancer.shutdown(BaseLoadBalancer.java:883)
+	at com.netflix.loadbalancer.DynamicServerListLoadBalancer.shutdown(DynamicServerListLoadBalancer.java:285)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.invokeCustomDestroyMethod(DisposableBeanAdapter.java:339)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:273)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:579)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:551)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1091)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:512)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1084)
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1060)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1029)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:978)
+	at org.springframework.cloud.context.named.NamedContextFactory.destroy(NamedContextFactory.java:92)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:258)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:579)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:551)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1091)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:512)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1084)
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1060)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1029)
+	at org.springframework.context.support.AbstractApplicationContext$1.run(AbstractApplicationContext.java:948)
+2021-05-02 12:10:46.850 [SpringContextShutdownHook] INFO  com.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2021-05-02 12:10:49.865 [SpringContextShutdownHook] INFO  com.netflix.discovery.DiscoveryClient - Unregistering ...
+2021-05-02 12:10:49.882 [SpringContextShutdownHook] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084 - deregister  status: 200
+2021-05-02 12:10:49.898 [SpringContextShutdownHook] INFO  com.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2021-05-02 12:16:27.392 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.rhythm.dining.Test], using SpringBootContextLoader
+2021-05-02 12:16:27.446 [main] INFO  o.s.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.rhythm.dining.Test]: no resource found for suffixes {-context.xml, Context.groovy}.
+2021-05-02 12:16:29.034 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2021-05-02 12:16:29.084 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3c77d488, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@63376bed, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4145bad8, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@d86a6f, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2892d68, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5ab956d7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3646a422, org.springframework.test.context.event.EventPublishingTestExecutionListener@750e2b97, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3e27aa33, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2e385cce, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2ddc9a9f, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@298a5e20, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2a7f1f10, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@46cdf8bd]
+2021-05-02 12:16:32.830 [main] INFO  com.rhythm.dining.Test - No active profile set, falling back to default profiles: default
+2021-05-02 12:16:34.575 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-05-02 12:16:34.581 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-05-02 12:16:34.648 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 33ms. Found 0 Redis repository interfaces.
+2021-05-02 12:16:35.366 [main] INFO  o.springframework.cloud.context.scope.GenericScope - BeanFactory id=36b560d1-9647-324a-8597-f95bf96f59be
+2021-05-02 12:16:42.752 [main] INFO  com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-05-02 12:16:42.765 [main] INFO  com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-05-02 12:16:43.208 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-02 12:16:45.680 [main] INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses Jersey
+2021-05-02 12:16:47.158 [main] INFO  o.s.cloud.netflix.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2021-05-02 12:16:47.609 [main] INFO  com.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2021-05-02 12:16:48.786 [main] INFO  c.n.discovery.provider.DiscoveryJerseyProvider - Using JSON encoding codec LegacyJacksonJson
+2021-05-02 12:16:48.786 [main] INFO  c.n.discovery.provider.DiscoveryJerseyProvider - Using JSON decoding codec LegacyJacksonJson
+2021-05-02 12:16:49.061 [main] INFO  c.n.discovery.provider.DiscoveryJerseyProvider - Using XML encoding codec XStreamXml
+2021-05-02 12:16:49.061 [main] INFO  c.n.discovery.provider.DiscoveryJerseyProvider - Using XML decoding codec XStreamXml
+2021-05-02 12:16:49.495 [main] INFO  c.n.d.shared.resolver.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2021-05-02 12:16:50.419 [main] INFO  com.netflix.discovery.DiscoveryClient - Disable delta property : false
+2021-05-02 12:16:50.421 [main] INFO  com.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2021-05-02 12:16:50.422 [main] INFO  com.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2021-05-02 12:16:50.422 [main] INFO  com.netflix.discovery.DiscoveryClient - Application is null : false
+2021-05-02 12:16:50.423 [main] INFO  com.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2021-05-02 12:16:50.423 [main] INFO  com.netflix.discovery.DiscoveryClient - Application version is -1: true
+2021-05-02 12:16:50.423 [main] INFO  com.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2021-05-02 12:16:50.853 [main] INFO  com.netflix.discovery.DiscoveryClient - The response status is 200
+2021-05-02 12:16:50.857 [main] INFO  com.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2021-05-02 12:16:50.863 [main] INFO  com.netflix.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2021-05-02 12:16:50.868 [main] INFO  com.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1619929010867 with initial instances count: 5
+2021-05-02 12:16:50.879 [main] INFO  o.s.c.n.e.serviceregistry.EurekaServiceRegistry - Registering application DINING with eureka with status UP
+2021-05-02 12:16:50.881 [main] INFO  com.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1619929010881, current=UP, previous=STARTING]
+2021-05-02 12:16:50.886 [DiscoveryClient-InstanceInfoReplicator-0] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084: registering service...
+2021-05-02 12:16:50.983 [DiscoveryClient-InstanceInfoReplicator-0] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084 - registration status: 204
+2021-05-02 12:16:51.494 [main] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2021-05-02 12:16:51.508 [main] INFO  com.rhythm.dining.Test - Started Test in 22.308 seconds (JVM running for 26.231)
+2021-05-02 12:16:52.273 [main] INFO  com.netflix.config.ChainedDynamicProperty - Flipping property: user.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2021-05-02 12:16:52.337 [main] INFO  com.netflix.util.concurrent.ShutdownEnabledTimer - Shutdown hook installed for: NFLoadBalancer-PingTimer-user
+2021-05-02 12:16:52.338 [main] INFO  com.netflix.loadbalancer.BaseLoadBalancer - Client: user instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=user,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+2021-05-02 12:16:52.354 [main] INFO  c.n.loadbalancer.DynamicServerListLoadBalancer - Using serverListUpdater PollingServerListUpdater
+2021-05-02 12:16:52.411 [main] INFO  com.netflix.config.ChainedDynamicProperty - Flipping property: user.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2021-05-02 12:16:52.415 [main] INFO  c.n.loadbalancer.DynamicServerListLoadBalancer - DynamicServerListLoadBalancer for client user initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=user,current list of Servers=[DESKTOP-F7K69CA:8083],Load balancer stats=Zone stats: {defaultzone=[Zone:defaultzone;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:DESKTOP-F7K69CA:8083;	Zone:defaultZone;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:org.springframework.cloud.netflix.ribbon.eureka.DomainExtractingServerList@11138809
+2021-05-02 12:16:53.225 [Thread-334] INFO  com.netflix.loadbalancer.PollingServerListUpdater - Shutting down the Executor Pool for PollingServerListUpdater
+2021-05-02 12:16:53.226 [SpringContextShutdownHook] INFO  o.s.c.n.e.serviceregistry.EurekaServiceRegistry - Unregistering application DINING with eureka with status DOWN
+2021-05-02 12:16:53.227 [DiscoveryClient-InstanceInfoReplicator-0] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084: registering service...
+2021-05-02 12:16:53.232 [DiscoveryClient-InstanceInfoReplicator-0] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084 - registration status: 204
+2021-05-02 12:16:53.243 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-05-02 12:16:53.379 [SpringContextShutdownHook] INFO  com.netflix.util.concurrent.ShutdownEnabledTimer - Shutdown hook removed for: NFLoadBalancer-PingTimer-user
+2021-05-02 12:16:53.383 [SpringContextShutdownHook] INFO  com.netflix.util.concurrent.ShutdownEnabledTimer - Exception caught (might be ok if at shutdown)
+java.lang.IllegalStateException: Shutdown in progress
+	at java.lang.ApplicationShutdownHooks.remove(ApplicationShutdownHooks.java:82)
+	at java.lang.Runtime.removeShutdownHook(Runtime.java:239)
+	at com.netflix.util.concurrent.ShutdownEnabledTimer.cancel(ShutdownEnabledTimer.java:70)
+	at com.netflix.loadbalancer.BaseLoadBalancer.cancelPingTask(BaseLoadBalancer.java:632)
+	at com.netflix.loadbalancer.BaseLoadBalancer.shutdown(BaseLoadBalancer.java:883)
+	at com.netflix.loadbalancer.DynamicServerListLoadBalancer.shutdown(DynamicServerListLoadBalancer.java:285)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.invokeCustomDestroyMethod(DisposableBeanAdapter.java:339)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:273)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:579)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:551)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1091)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:512)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1084)
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1060)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1029)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:978)
+	at org.springframework.cloud.context.named.NamedContextFactory.destroy(NamedContextFactory.java:92)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:258)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:579)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:551)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1091)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:512)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1084)
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1060)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1029)
+	at org.springframework.context.support.AbstractApplicationContext$1.run(AbstractApplicationContext.java:948)
+2021-05-02 12:16:53.394 [SpringContextShutdownHook] INFO  com.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2021-05-02 12:16:56.411 [SpringContextShutdownHook] INFO  com.netflix.discovery.DiscoveryClient - Unregistering ...
+2021-05-02 12:16:56.427 [SpringContextShutdownHook] INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_DINING/DESKTOP-F7K69CA:dining:8084 - deregister  status: 200
+2021-05-02 12:16:56.459 [SpringContextShutdownHook] INFO  com.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient

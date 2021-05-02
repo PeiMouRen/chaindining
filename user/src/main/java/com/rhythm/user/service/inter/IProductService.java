@@ -12,11 +12,14 @@ import java.util.Map;
 @FeignClient(value = "product")
 public interface IProductService {
 
+    @GetMapping(value = "/product/productTypes")
+    Result getproductTypes();
+
     @PutMapping(value = "/product/inventory")
     Result updateInventory(@RequestBody Map<String, String> param);
 
-    @GetMapping(value = "/product/inventory/{rpstId}")
-    Result getInventory(@SpringQueryMap Page page, @PathVariable Integer rpstId);
+    @GetMapping(value = "/product/inventory/{diningId}")
+    Result getInventory(@SpringQueryMap Page page, @PathVariable Integer diningId);
 
     @PostMapping(value = "/product/product")
     Result addProduct(@RequestBody Product product);

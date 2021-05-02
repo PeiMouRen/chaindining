@@ -31,8 +31,8 @@ public class Bzorder implements Serializable {
 
     private Integer type;
 
-    @TableField("rpstName")
-    private String rpstName;
+    @TableField("diningName")
+    private String diningName;
 
     @TableField("productName")
     private String productName;

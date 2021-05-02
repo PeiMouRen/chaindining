@@ -21,4 +21,6 @@ public interface IDiningService extends IService<Dining> {
     void updDining(Dining dining);
 
     List<Dining> getDiningByManageId(Integer userId);
+
+    Page getDinings(Page page);
 }

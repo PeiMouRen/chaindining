@@ -23,16 +23,19 @@ import java.util.Map;
 @Repository
 public interface ProductMapper extends BaseMapper<Product> {
 
-    void updateInventory(@Param("rpstId") Integer rpstId, @Param("productId") Integer productId,
+    void updateInventory(@Param("diningId") Integer diningId, @Param("productId") Integer productId,
                          @Param("productNum") Integer productNum, @Param("operate") Integer operate);
 
-    Page selectInventory(@Param("page")Page page, @Param("rpstId") Integer rpstId);
+    Page selectInventory(@Param("page")Page page, @Param("diningId") Integer diningId);
 
-    @Select("select * from rpst_product where rpstId = #{rpstId} and productId = #{productId}")
-    Map<String, Integer> selectInventory(@Param("rpstId") Integer rpstId, @Param("productId") Integer productId);
+    @Select("select * from dining_product where diningId = #{diningId} and productId = #{productId}")
+    Map<String, Integer> selectInventory1(@Param("diningId") Integer diningId, @Param("productId") Integer productId);
 
-    @Insert("insert into rpst_product value(#{rpstId}, #{productId}, #{productNum})")
-    void insertInventory(@Param("rpstId") Integer rpstId, @Param("productId") Integer productId,
+    @Insert("insert into dining_product value(#{diningId}, #{productId}, #{productNum})")
+    void insertInventory(@Param("diningId") Integer diningId, @Param("productId") Integer productId,
                          @Param("productNum") Integer productNum);
+
+    @Select("select distinct type from product")
+    List<String> getProductTypes();
 
 }

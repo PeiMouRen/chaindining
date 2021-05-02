@@ -61,16 +61,15 @@
 
 <script type="text/html" id="userTpl">
 	{{#
-		var nameArr = [];
-		for (var i = 0; i < d.userIds.length; i++) {
-			var test = userDatas.filter(item => item.value == d.userIds[i]);
-			if ( test != 'undefined') {
-				nameArr.push(test[0].name);
-			}
+		var user = userDatas.filter(item => item.value == d.userId);
+		var temp;
+		if (user.length == 0) {
+			temp = '无';
+		}else {
+			temp = user[0].name
 		}
-
 	}}
-	{{ nameArr.toString()}}
+	{{temp}}
 </script>
 
 <script src="/js/jquery-3.6.0.min.js" charset="utf-8"></script>
@@ -80,11 +79,11 @@
 <!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
 
 <script th:inline="none">
-	var userLevelHidden = $('#user_level').val() == 1? false : true;
+	var userSelectDisabled = $('#user_level').val() == 1? false : true;
 	var userDatas = [];
 	$.ajax({
 		type: "get",
-		url: "/user/users",
+		url: "/user/users/-2",
 		dataType: "json",
 		async: false,
 		success: function(result) {
@@ -99,13 +98,19 @@
 	})
 	var userSelect = xmSelect.render({
 		el: '#user_select',
-		name: 'userIds',
+		name: 'userId',
 		data: userDatas,
+		radio: true,
 		filterable: true,
 		size: 'mini',
 		paging: true,
+		clickClose: true,
+		disabled: userSelectDisabled,
 		direction: 'down'
 	});
+	if (userSelectDisabled == true) {
+		userSelect.setValue([userDatas[0]]);
+	}
 
 
 	layui.extend({
@@ -129,7 +134,7 @@
 				{field:'id', width:120, title: '餐厅编号', sort: true, align: 'center'}
 				,{field:'name', width:200, title: '餐厅名称', align: 'center'}
 				,{field:'place', width:200, title: '餐厅地点', align: 'center'}
-				,{field:'users', width:200, title: '餐厅管理员', align: 'center', templet: '#userTpl'}
+				,{field:'userId', width:200, title: '餐厅管理员', align: 'center', templet: '#userTpl'}
 				,{width:200,title:'操作', toolbar:'#barDemo', align: 'center'}
 			]]
 			,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
@@ -158,6 +163,7 @@
 			switch(obj.event){
 				case 'addDining':
 					$('#dining_form form')[0].reset();
+					currentPicker.setValue('');
 					userSelect.setValue([]);
 					layer.open({
 						type: 1,
@@ -188,7 +194,12 @@
 				});
 			} else if(obj.event === 'edit'){
 				form.val('dining_form', obj.data);
-				userSelect.setValue(obj.data.userIds);
+				currentPicker.setValue(obj.data.place);
+				if (obj.data.userId != null) {
+					userSelect.setValue([obj.data.userId]);
+				} else {
+					userSelect.setValue([]);
+				}
 
 				layer.open({
 					type: 1,
@@ -203,7 +214,7 @@
 		// 监听form表单提交
 		form.on('submit(form_submit)', function(data) {
 			var method = data.field.id == ''? 'post' : 'put';
-			data.field.userIds = userSelect.getValue('value');
+			data.field.userId = userSelect.getValue('value')[0];
 			$.ajax({
 				type: method,
 				url: "/dining/dining",

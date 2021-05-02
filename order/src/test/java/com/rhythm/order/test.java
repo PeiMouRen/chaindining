@@ -1,8 +1,8 @@
 package com.rhythm.order;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.rhythm.common.result.Result;
-import com.rhythm.order.service.inter.IRpstService;
-import com.rhythm.order.service.inter.IUserService;
+import com.rhythm.order.service.IBzorderService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,21 +16,14 @@ import java.util.Map;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = OrderApplication.class)
 public class test {
-
     @Autowired
-    private IUserService userService;
-    @Autowired
-    private IRpstService rpstService;
+    private IBzorderService iBzorderService;
 
     @Test
     public void test1() {
-        Map<String, Object> map = null;
-        Result result = null;
-        result = rpstService.getRpst(1);
-        log.info("rpst" + result.toString());
-        result = userService.getUser(1);
-        log.info("user" + result.toString());
-        map = (Map<String, Object>)(result.getData());
-        log.info("map: " + map.toString());
+        Page page = new Page(1, 10);
+        page = iBzorderService.page(page);
+        log.info("" + page.getTotal());
+        log.info("" + page.getRecords().size());
     }
 }
